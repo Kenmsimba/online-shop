@@ -29,6 +29,7 @@
     td{
         border: 1px solid skyblue;
         text-align: center;
+        color: white;
     }
    </style>
 </head>
@@ -88,7 +89,14 @@
 
                 </table>
 
+                {{-- pagination  --}}               
+
             </div>
+            <div class="div_des">
+                {{$products->onEachSide(1)->links()}}   <!--avoid displaying each page incase the db has too many products-->
+            </div>
+
+            
 
           </div>
       </div>
