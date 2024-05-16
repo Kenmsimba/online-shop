@@ -70,7 +70,11 @@
 
                         <td>{{$product->title}} </td>
 
-                        <td>{{$product->description}} </td>
+                        {{-- display 5 characters only for each description incase of long descriptions  --}}
+                        <td>{!!Str::limit($product->description,50)!!}</td>
+
+                        {{-- display words instead of characters
+                        <td>{!!Str::words($product->description,5)!!}</td> --}}
                         
                         <td>{{$product->category}} </td>
 
