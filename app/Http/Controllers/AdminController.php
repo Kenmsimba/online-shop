@@ -121,4 +121,12 @@ class AdminController extends Controller
 
 
     }
+
+    public function update_product($id)
+    {
+        $data = Product::find($id);
+
+
+        return view('admin.update_product',compact('data'));
+    }
 }
