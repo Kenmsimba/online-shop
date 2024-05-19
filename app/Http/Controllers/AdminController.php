@@ -126,7 +126,37 @@ class AdminController extends Controller
     {
         $data = Product::find($id);
 
+        $categories = Category::all();
 
-        return view('admin.update_product',compact('data'));
+
+        return view('admin.update_product',compact('data','categories'));
+    }
+
+    public function edit_product(Request $request, $id)
+    {
+        $data = Product::find($id);
+
+        $data->title = $request->title;
+        $data->description = $request->description;
+        $data->price = $request->price;
+        $data->quantity = $request->quantity;
+        $data->category = $request->category;
+        $image = $request->image;
+
+        if ($image)
+        {
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+
+            $request->image->move('products', $imagename);
+
+            $data->image = $imagename;
+        }
+
+        $data->save();
+
+        toastr()->closeButton()->success('Product updated successfully!');
+
+        return redirect('view_product');
+
     }
 }
