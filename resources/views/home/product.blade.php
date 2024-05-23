@@ -11,7 +11,7 @@
 
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
-            <a href="">
+            
               <div class="img-box">
                 <img height="275px" src="/products/{{$product->image}}" alt="">
               </div>
@@ -31,7 +31,12 @@
                   New
                 </span>
               </div> --}}
-            </a>
+
+              <div style="padding:15px;">
+                <a class="btn btn-danger" href="{{url('product_details',$product->id)}}">Details</a>
+              </div>
+            
+
           </div>
         </div>
 
